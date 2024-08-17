@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: cjava-cursos-consumidor
+          uri: lb://cjava-cursos-consumidor
+          predicates:
+            - Path=/api/consumidor/**
+          filters:
+            - StripPrefix=2
+        - id: cjava-cursos
+          uri: lb://cjava-cursos
+          predicates:
+            - Path=/api/consumidor/**
+          filters:
+            - StripPrefix=2
